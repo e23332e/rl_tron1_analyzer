@@ -200,20 +200,6 @@ IsaacLab 的 YAML 配置文件使用 Python 专属标签（`!!python/tuple`、`!
 
 `env_parser.py` 和 `agent_parser.py` 均通过 `safe_load_yaml()` 统一调用预处理。
 
-## 常见问题
-
-**Q: 导入时报错 `could not determine a constructor for the tag 'python/tuple'`？**
-
-A: 该配置文件的 YAML 包含 Python 专属标签。已修复的 `agent_parser.py` 会自动预处理这些标签。如果问题仍然存在，请检查 `yaml_cleaner.py` 是否正确处理了该标签格式。
-
-**Q: 批量导入指定目录后提示 `imported: 0`？**
-
-A: 说明目录结构不匹配。确保目录内包含 `params/env.yaml` 和 `params/agent.yaml`。支持的三种结构见上方"仪表盘"说明。
-
-**Q: 实验名称/机器人类型显示不准确？**
-
-A: 实验名称优先从 `agent.yaml` 的 `experiment_name` 字段读取。机器人类型（SF/PF/WF）和任务类型（Walk/Flat/Stand）由实验名称推断。可在 agent.yaml 中填写准确的 `experiment_name`。
-
 ## 技术栈
 
 - **后端**：Flask + PyYAML + SQLite
